@@ -66,20 +66,8 @@ public class LinkedListDeque<T> {
         return this.head.next == this.tail || this.tail.prev == this.head;
     }
 
-    public int getSize() {
-        return this.size;
-    }
-
     public int size() {
         return this.size;
-    }
-
-    public T getFirst() {
-        return this.head.next.value;
-    }
-
-    public T getLast() {
-        return this.tail.prev.value;
     }
 
     public T get(int index) {
@@ -100,7 +88,7 @@ public class LinkedListDeque<T> {
         return getRecursive2(index, this.head.next);
     }
 
-    public T getRecursive2(int index, Node<T> cur) {
+    private T getRecursive2(int index, Node<T> cur) {
         if (index == 0) {
             return cur.value;
         } else {
