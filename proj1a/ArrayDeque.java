@@ -5,7 +5,7 @@ public class ArrayDeque<T> {
     private int endIdx;
     private T[] elements;
 
-//    (beginIdx, endIdx)
+//    [beginIdx, endIdx)
 
     @SuppressWarnings("unchecked")
     public ArrayDeque() {
@@ -42,8 +42,8 @@ public class ArrayDeque<T> {
         if (this.size == this.reservedSize) {
             extend();
         }
-        this.endIdx = (this.endIdx + 1 + this.reservedSize) % this.reservedSize;
         this.elements[this.endIdx] = value;
+        this.endIdx = (this.endIdx + 1) % this.reservedSize;
         this.size++;
     }
 
@@ -53,7 +53,7 @@ public class ArrayDeque<T> {
         }
         T res = this.elements[this.beginIdx];
         this.elements[this.beginIdx] = null;
-        this.beginIdx = (this.beginIdx + 1 + this.reservedSize) % this.reservedSize;
+        this.beginIdx = (this.beginIdx + 1) % this.reservedSize;
         this.size--;
         if (this.size * 2 + 1 < this.reservedSize && this.reservedSize >= 16) {
             shrink();
@@ -65,9 +65,9 @@ public class ArrayDeque<T> {
         if (this.isEmpty()) {
             System.out.println("Empty");
         }
+        this.endIdx = (this.endIdx - 1 + this.reservedSize) % this.reservedSize;
         T res = this.elements[this.endIdx];
         this.elements[this.endIdx] = null;
-        this.endIdx = (this.endIdx - 1 + this.reservedSize) % this.reservedSize;
         this.size--;
         if (this.size * 2 + 1 < this.reservedSize && this.reservedSize >= 16) {
             shrink();
@@ -76,7 +76,7 @@ public class ArrayDeque<T> {
     }
 
     public T get(int idx) {
-        return this.elements[(this.beginIdx + idx + this.reservedSize) % this.reservedSize];
+        return this.elements[(this.beginIdx + idx) % this.reservedSize];
     }
 
     public boolean isEmpty() {
@@ -87,7 +87,7 @@ public class ArrayDeque<T> {
     private void extend() {
         T[] newElements = (T[]) new Object[this.reservedSize * 2];
         for (int i = 0; i < this.size; i++) {
-            newElements[i] = this.elements[(this.beginIdx + i + this.reservedSize) % this.reservedSize];
+            newElements[i] = this.elements[(this.beginIdx + i) % this.reservedSize];
         }
         this.elements = newElements;
         this.beginIdx = 0;
@@ -99,7 +99,7 @@ public class ArrayDeque<T> {
     private void shrink() {
         T[] newElements = (T[]) new Object[(int) (this.reservedSize / 2) + 1];
         for (int i = 0; i < this.size; i++) {
-            newElements[i] = this.elements[(this.beginIdx + i + this.reservedSize) % this.reservedSize];
+            newElements[i] = this.elements[(this.beginIdx + i) % this.reservedSize];
         }
         this.elements = newElements;
         this.beginIdx = 0;
