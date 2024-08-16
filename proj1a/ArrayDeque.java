@@ -16,7 +16,7 @@ public class ArrayDeque<T> {
         this.elements = (T[]) new Object[this.reservedSize];
     }
 
-    @SuppressWarnings("unchecked")
+/*    @SuppressWarnings("unchecked")
     public ArrayDeque(int initSize) {
         if (initSize < 0) {
             System.out.println("init size < 0");
@@ -27,7 +27,7 @@ public class ArrayDeque<T> {
         this.beginIdx = 0;
         this.endIdx = 0;
         this.elements = (T[]) new Object[this.reservedSize];
-    }
+    }*/
 
     public void addFirst(T value) {
         if (this.size == this.reservedSize) {
@@ -54,6 +54,7 @@ public class ArrayDeque<T> {
         T res = this.elements[this.beginIdx];
         this.elements[this.beginIdx] = null;
         this.beginIdx = (this.beginIdx + 1 + this.reservedSize) % this.reservedSize;
+        this.size--;
         if (this.size * 2 + 1 < this.reservedSize && this.reservedSize >= 16) {
             shrink();
         }
@@ -64,9 +65,10 @@ public class ArrayDeque<T> {
         if (this.isEmpty()) {
             System.out.println("Empty");
         }
-        T res = this.elements[this.endIdx--];
+        T res = this.elements[this.endIdx];
         this.elements[this.endIdx] = null;
         this.endIdx = (this.endIdx - 1 + this.reservedSize) % this.reservedSize;
+        this.size--;
         if (this.size * 2 + 1 < this.reservedSize && this.reservedSize >= 16) {
             shrink();
         }

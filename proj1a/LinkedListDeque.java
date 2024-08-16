@@ -1,6 +1,6 @@
 public class LinkedListDeque<T> {
 
-    public static class Node<T> {
+    private static class Node<T> {
         public T value;
         public Node<T> prev;
         public Node<T> next;
@@ -47,6 +47,7 @@ public class LinkedListDeque<T> {
         }
         Node<T> res = this.head.next;
         this.head.next = res.next;
+        res.next.prev = this.head;
         size--;
         return res.value;
     }
@@ -58,6 +59,7 @@ public class LinkedListDeque<T> {
 
         Node<T> res = this.tail.prev;
         this.tail.prev = res.prev;
+        res.prev.next = this.tail;
         size--;
         return res.value;
     }
@@ -106,5 +108,6 @@ public class LinkedListDeque<T> {
             System.out.print(p.value + " ");
             p = p.next;
         }
+        System.out.print("\n");
     }
 }
