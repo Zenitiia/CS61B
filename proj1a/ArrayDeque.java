@@ -50,6 +50,7 @@ public class ArrayDeque<T> {
     public T removeFirst() {
         if (this.isEmpty()) {
             System.out.println("Empty");
+            return null;
         }
         T res = this.elements[this.beginIdx];
         this.elements[this.beginIdx] = null;
@@ -64,6 +65,7 @@ public class ArrayDeque<T> {
     public T removeLast() {
         if (this.isEmpty()) {
             System.out.println("Empty");
+            return null;
         }
         this.endIdx = (this.endIdx - 1 + this.reservedSize) % this.reservedSize;
         T res = this.elements[this.endIdx];

@@ -1,10 +1,10 @@
 public class LinkedListDeque<T> {
 
     private static class Node<T> {
-        public T value;
-        public Node<T> prev;
-        public Node<T> next;
-        public Node(T value, Node<T> prevNode, Node<T> nextNode) {
+        private T value;
+        private Node<T> prev;
+        private Node<T> next;
+        private Node(T value, Node<T> prevNode, Node<T> nextNode) {
             this.value = value;
             this.prev = prevNode;
             this.next = nextNode;
@@ -101,7 +101,7 @@ public class LinkedListDeque<T> {
     public void printDeque() {
         if (this.isEmpty()) {
             System.out.println("Empty");
-            return ;
+            return;
         }
         Node<T> p = this.head.next;
         while (p.next != null) {
