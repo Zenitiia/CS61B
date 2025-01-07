@@ -1,5 +1,3 @@
-import org.junit.Test;
-
 public class Palindrome {
 
     public Deque<Character> wordToDeque(String word) {
