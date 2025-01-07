@@ -125,7 +125,7 @@ public class ArrayDeque<T> implements Deque<T> {
         if (isEmpty()) {
             System.out.println("Empty!");
         }
-        for (int i = this.beginIdx + 1; i < this.endIdx; i++) {
+        for (int i = this.beginIdx; i != this.endIdx; i = (i + 1) % this.reservedSize) {
             System.out.print(this.elements[i] + " ");
         }
         System.out.print("\n");
