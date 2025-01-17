@@ -8,7 +8,7 @@ public class TestArrayDequeGold {
         ArrayDequeSolution<Integer> std = new ArrayDequeSolution<>();
         StringBuffer log = new StringBuffer();
         for (int i = 0; i < 114; i++) {
-            Integer x = StdRandom.uniform(114514);
+            Integer x = StdRandom.uniform(1919);
             Integer type = StdRandom.uniform(4);
             Integer removedStd = 0;
             Integer removedTest = 0;
@@ -28,11 +28,11 @@ public class TestArrayDequeGold {
                 test.addLast(x);
                 std.addLast(x);
             } else if (type == 2) {
-                log.append("removeFirst()");
+                log.append("removeFirst()\n");
                 removedTest = test.removeFirst();
                 removedStd = std.removeFirst();
             } else {
-                log.append("removeLast()");
+                log.append("removeLast()\n");
                 removedTest = test.removeLast();
                 removedStd = std.removeLast();
             }
