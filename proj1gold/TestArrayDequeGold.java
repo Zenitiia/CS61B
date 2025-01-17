@@ -13,7 +13,7 @@ public class TestArrayDequeGold {
             Integer removedStd = 0;
             Integer removedTest = 0;
             if (std.isEmpty()) {
-                type /= 2;
+                type = StdRandom.uniform(2);
             }
             if (type == 0) {
                 log.append("addFirst(");
