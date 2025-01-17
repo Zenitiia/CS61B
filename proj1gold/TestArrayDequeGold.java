@@ -1,8 +1,6 @@
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-import java.util.ArrayDeque;
-
 public class TestArrayDequeGold {
     @Test
     public void testStudentArrayDeque() {
