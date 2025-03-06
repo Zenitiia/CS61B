@@ -51,7 +51,7 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
     @Override
     public void enqueue(T x) {
         // TODO: Enqueue the item. Don't forget to increase fillCount and update last.
-        if (this.first == this.last) {
+        if (this.isFull()) {
             throw new RuntimeException("Ring buffer overflow");
         }
         this.rb[this.last] = x;
@@ -72,6 +72,7 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
         }
         T result = this.rb[this.first];
         this.first = (this.first + 1) % this.capacity;
+        this.fillCount--;
         return result;
     }
 
