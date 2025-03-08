@@ -23,6 +23,16 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
         this.fillCount = 0;
     }
 
+    @Override
+    public int capacity() {
+        return this.capacity;
+    }
+
+    @Override
+    public int fillCount() {
+        return this.fillCount;
+    }
+
     /**
      * Adds x to the end of the ring buffer. If there is no room, then
      * throw new RuntimeException("Ring buffer overflow"). Exceptions
@@ -30,7 +40,6 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
      */
     @Override
     public void enqueue(T x) {
-        // TODO: Enqueue the item. Don't forget to increase fillCount and update last.
         if (this.isFull()) {
             throw new RuntimeException("Ring buffer overflow");
         }
